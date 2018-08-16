@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#D93240</color>
+    <color name="colorPrimaryDark">#8C2B3D</color>
+    <color name="colorAccent">#2A3140</color>
+
+    <color name="bottomNavigationItem">@color/colorPrimaryDark</color>
+    <color name="bottomNavigationItemSelected">@color/colorPrimary</color>
+    <color name="bottomNavigationItemBadge">@android:color/holo_orange_dark</color>
+
+
+</resources>
