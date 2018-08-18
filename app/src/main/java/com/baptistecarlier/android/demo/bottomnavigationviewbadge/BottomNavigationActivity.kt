@@ -1,31 +1,42 @@
 package com.baptistecarlier.android.demo.bottomnavigationviewbadge
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.design.internal.BottomNavigationItemView
+import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnTouchListener
+import android.widget.FrameLayout
+import android.widget.TextView
 import com.baptistecarlier.android.demo.bottomnavigationviewbadge.adapter.DemoViewPagerAdapter
 import com.baptistecarlier.android.demo.bottomnavigationviewbadge.fragment.OnCallbackReceived
+import com.baptistecarlier.android.demo.bottomnavigationviewbadge.model.BottomNavViewMainNavigation
+import com.baptistecarlier.android.demo.bottomnavigationviewbadge.model.BottomNavViewModel
 import kotlinx.android.synthetic.main.activity_bottom_navigation.*
-import android.graphics.drawable.LayerDrawable
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.BitmapDrawable
-import android.widget.TextView
-import android.widget.FrameLayout
-import android.support.v4.view.MenuItemCompat.getActionView
-import android.view.View
-import android.view.LayoutInflater
-import android.support.design.internal.BottomNavigationItemView
-import android.support.design.internal.BottomNavigationMenuView
-import android.view.MenuItem
-import android.view.ViewGroup
-import android.view.MotionEvent
-import android.view.View.OnTouchListener
 
 
 
 
 class BottomNavigationActivity : AppCompatActivity(), OnCallbackReceived {
+
+    lateinit var bottomNavViewModel : BottomNavViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_bottom_navigation)
+
+        viewpager.setAdapter(DemoViewPagerAdapter(supportFragmentManager, this))
+        // disable pager swiping
+        viewpager.setOnTouchListener(OnTouchListener { v, event -> true })
+
+        bottomNavViewModel = ViewModelProviders.of(this).get(BottomNavViewModel::class.java);
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -45,17 +56,6 @@ class BottomNavigationActivity : AppCompatActivity(), OnCallbackReceived {
         false
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bottom_navigation)
-
-        viewpager.setAdapter(DemoViewPagerAdapter(supportFragmentManager, this))
-        // disable pager swiping
-        viewpager.setOnTouchListener(OnTouchListener { v, event -> true })
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-    }
-
     override fun incrementBottomNavigationViewItem(position: Int) {
         Log.d("Activity", "incrementBottomNavigationViewItem( ${position} )");
         updateBottomNavigationViewItem(position)
@@ -73,7 +73,7 @@ class BottomNavigationActivity : AppCompatActivity(), OnCallbackReceived {
 
         // Inflating new view
         val newItem = LayoutInflater.from(this)
-                .inflate(R.layout.view_home_badge,
+                .inflate(BottomNavViewMainNavigation.getLayoutIdFromPosition(position),
                         mbottomNavigationMenuView, false)
 
         var newItemRedCircle = newItem.findViewById(R.id.view_alert_red_circle) as FrameLayout
@@ -83,10 +83,9 @@ class BottomNavigationActivity : AppCompatActivity(), OnCallbackReceived {
         // Only put Int in this the textview or update this part
         var counter = 0
         if ( !reset ) {
-            if (newItemCountTextView.text.isNotBlank()) {
-                counter = newItemCountTextView.text.toString().toInt()
-            }
-            counter++
+            counter = bottomNavViewModel.increment(position)
+        } else {
+            bottomNavViewModel.reset(position)
         }
 
         // Set text and color
