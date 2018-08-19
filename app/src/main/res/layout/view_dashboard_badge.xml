@@ -20,11 +20,11 @@
             android:src="@drawable/ic_dashboard_black_24dp"/>
 
         <FrameLayout
-            android:id="@+id/view_alert_red_circle"
+            android:id="@+id/view_alert_circle"
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:layout_gravity="top|end"
-            android:background="@drawable/circle_red"
+            android:background="@drawable/bottom_navigation_badge"
             android:visibility="gone"
             tools:visibility="visible">
 
