@@ -2,8 +2,11 @@ package com.baptistecarlier.android.demo.bottomnavigationviewbadge.model
 
 import com.baptistecarlier.android.demo.bottomnavigationviewbadge.R
 
+/*
+ * @author Baptiste Carlier @bapness
+ */
 
-enum class BottomNavViewMainNavigation(val position: Int, val layoutId : Int) {
+enum class EnumBottomNavigationLayout(val position: Int, val layoutId : Int) {
 
     HOME(0, R.layout.view_home_badge),
     DASHBOARD(1, R.layout.view_dashboard_badge),
@@ -11,7 +14,7 @@ enum class BottomNavViewMainNavigation(val position: Int, val layoutId : Int) {
 
 
     companion object {
-        private val map = BottomNavViewMainNavigation.values().associateBy(BottomNavViewMainNavigation::position);
+        private val map = EnumBottomNavigationLayout.values().associateBy(EnumBottomNavigationLayout::position);
         fun getLayoutIdFromPosition(position: Int) = map[position]!!.layoutId
     }
 }

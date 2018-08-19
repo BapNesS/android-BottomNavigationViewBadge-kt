@@ -2,19 +2,20 @@ package com.baptistecarlier.android.demo.bottomnavigationviewbadge.fragment
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.baptistecarlier.android.demo.bottomnavigationviewbadge.R
-import android.os.Build
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import kotlinx.android.synthetic.main.fragment_demo.*
+import com.baptistecarlier.android.demo.bottomnavigationviewbadge.R
 
-
+/*
+ * @author Baptiste Carlier @bapness
+ */
 class DemoFragment() : Fragment() {
 
     val fragmentPosition: Int by lazy { arguments?.getInt("fragmentPosition") ?: 0}
@@ -30,7 +31,7 @@ class DemoFragment() : Fragment() {
 
     private fun initSubviews(view: View) {
         var text : TextView = view.findViewById(R.id.textView)
-        text.append(" #${fragmentPosition}")
+        text.append(" #${fragmentPosition+1}")
 
         var buttonAddOneToFirst : Button = view.findViewById(R.id.buttonAddOneToFirst)
         buttonAddOneToFirst.setOnClickListener {

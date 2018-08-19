@@ -2,11 +2,12 @@
 <resources>
     <color name="colorPrimary">#D93240</color>
     <color name="colorPrimaryDark">#8C2B3D</color>
-    <color name="colorAccent">#2A3140</color>
+    <color name="colorAccent">#ff6f00</color>
+
+    <color name="background">#FFEEEEEE</color>
+    <color name="bottomNavigationBackground">#FFFFFFFF</color>
 
     <color name="bottomNavigationItem">@color/colorPrimaryDark</color>
     <color name="bottomNavigationItemSelected">@color/colorPrimary</color>
-    <color name="bottomNavigationItemBadge">@android:color/holo_orange_dark</color>
-
-
+    <color name="bottomNavigationItemBadge">@color/colorAccent</color>
 </resources>
