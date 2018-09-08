@@ -17,19 +17,19 @@
             android:layout_height="wrap_content"
             android:text="Fragment"
             android:textAppearance="@android:style/TextAppearance.Material.Large"
-            app:layout_constraintBottom_toTopOf="@id/buttonAddOneToFirst"
+            app:layout_constraintBottom_toTopOf="@id/buttonIncrementFirst"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"/>
 
         <Button
-            android:id="@+id/buttonAddOneToFirst"
+            android:id="@+id/buttonIncrementFirst"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Add 1 to first badge"
+            android:text="Increment badge position #1"
             app:layout_constraintBottom_toTopOf="@id/buttonResetFirst"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,18 +41,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Reset first badge"
-            app:layout_constraintBottom_toBottomOf="@id/buttonAddOneToCurrent"
+            android:text="Reset badge position #1"
+            app:layout_constraintBottom_toBottomOf="@id/buttonIncrementCurrent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAddOneToFirst"/>
+            app:layout_constraintTop_toBottomOf="@+id/buttonIncrementFirst"/>
 
         <Button
-            android:id="@+id/buttonAddOneToCurrent"
+            android:id="@+id/buttonIncrementCurrent"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add 1 to current badge"
+            android:text="Increment badge at current position"
             app:layout_constraintBottom_toTopOf="@id/buttonResetCurrent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,11 +63,11 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reset first badge"
+            android:text="Reset badge at current position"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAddOneToCurrent"/>
+            app:layout_constraintTop_toBottomOf="@+id/buttonIncrementCurrent"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -33,13 +33,13 @@ class DemoFragment() : Fragment() {
         var text : TextView = view.findViewById(R.id.textView)
         text.append(" #${fragmentPosition+1}")
 
-        var buttonAddOneToFirst : Button = view.findViewById(R.id.buttonAddOneToFirst)
-        buttonAddOneToFirst.setOnClickListener {
+        var buttonIncrementFirst : Button = view.findViewById(R.id.buttonIncrementFirst)
+        buttonIncrementFirst.setOnClickListener {
             mCallback!!.incrementBottomNavigationViewItem(0);
         }
 
-        var buttonAddOneToCurrent : Button = view.findViewById(R.id.buttonAddOneToCurrent)
-        buttonAddOneToCurrent.setOnClickListener {
+        var buttonIncrementCurrent : Button = view.findViewById(R.id.buttonIncrementCurrent)
+        buttonIncrementCurrent.setOnClickListener {
             mCallback!!.incrementBottomNavigationViewItem(fragmentPosition);
         }
 
